@@ -76,7 +76,7 @@ def build_architecture():
 	print(*tf.trainable_variables(), sep='\n')
 
 	with tf.name_scope('cost'):
-		cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels=labels, logits=prediction)) + \
+		cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels=tf.stop_gradient(labels), logits=prediction)) + \
 		tf.reduce_mean([0.001*tf.nn.l2_loss(t) for t in tf.trainable_variables() if t.name.startswith('w')])
 
 		tf.summary.scalar('cost', cost)
