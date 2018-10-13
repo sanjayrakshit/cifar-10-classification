@@ -210,7 +210,7 @@ def train(model, epochs, log_string):
 [_, unique] = ("%0.4f" %(time.time() / 1000)).split('.')
 log_string = "basic-{}-{}".format(sys.argv[1], unique)
 model = build_architecture()
-train(model, 1000, log_string)
+train(model, 10000, log_string)
 
 
 
